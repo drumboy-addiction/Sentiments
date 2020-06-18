@@ -1,17 +1,20 @@
 from flask import Flask, request, render_template
 import pickle
-from sklearn.feature_extraction.text import TfidfVectorizer
 app = Flask(__name__)
 
 
 
-with open('model_classifier','r') as f:
-    classifier = pickle.load(f)
-with open('vectorizer_pickle','r') as f:
+with open('Model/model.pkl','rb') as f:
+    model = pickle.load(f)
+with open('Model/transformer.pkl','rb') as f:
     vectorizer = pickle.load(f)
 
 @app.route('/')
 def index():
+    word = 'good'
+    vectorized = vectorizer.transform([word])
+    prediction = model.predict(vectorized)
+    print(prediction)
     return render_template("index.html")
 
 @app.route('/predict', methods = ['POST'])
