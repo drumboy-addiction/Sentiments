@@ -2,4 +2,7 @@ Flask
 gunicorn
 Werkzeug
 pandas
-sklearn
+scikit-learn
+jinja2
+itsdangerous
+numpy
