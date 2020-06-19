@@ -1,13 +1,10 @@
 from flask import Flask, request, render_template
 import pickle
-from sklearn.feature_extraction.text import TfidfVectorizer
 app = Flask(__name__)
 
-
-
-with open('model_classifier','r') as f:
-    classifier = pickle.load(f)
-with open('vectorizer_pickle','r') as f:
+with open('Model/model.pkl','rb') as f:
+    model = pickle.load(f)
+with open('Model/transformer.pkl','rb') as f:
     vectorizer = pickle.load(f)
 
 @app.route('/')
@@ -16,7 +13,13 @@ def index():
 
 @app.route('/predict', methods = ['POST'])
 def predict():
-    return
+    # Passed variable should be of the name **text**
+    text = request.form['text']
+    vectorized_text = vectorizer.transform([text])
+    prediction = model.predict(vectorized_text)
+    result = "It is a " + str(prediction[0]) + " sentence"
+    # value returned wull be of name **result**
+    return render_template('result.html', result = result)
     
 
 if __name__ == '__main__':
