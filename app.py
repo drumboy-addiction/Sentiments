@@ -1,5 +1,8 @@
 from flask import Flask, request, render_template
 import pickle
+import time
+from sklearn import svm
+from sklearn.metrics import classification_report
 app = Flask(__name__)
 
 with open('Model/model.pkl','rb') as f:

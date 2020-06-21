@@ -22,10 +22,10 @@
         class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
       >
         <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-          <a class="mr-5 hover:text-gray-900">Home</a>
-          <a class="mr-5 hover:text-gray-900">Predicitons</a>
-          <a class="mr-5 hover:text-gray-900">About Us</a>
-          <a class="hover:text-gray-900">Blog</a>
+          <a class="mr-5 hover:text-gray-900 cursor-pointer">Home</a>
+          <a class="mr-5 hover:text-gray-900 cursor-pointer">Predicitons</a>
+          <a class="mr-5 hover:text-gray-900 cursor-pointer">About Us</a>
+          <a class="hover:text-gray-900 cursor-pointer">Blog</a>
         </nav>
         <a
           class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0"
@@ -66,7 +66,14 @@
         </div>
       </div>
     </header>
-
-    <h1>{{result}}</h1>
+    <div
+      class="container max-w-md mx-auto my-8 p-8 border rounded shadow-inner shadow-2xl bg-gray-200"
+    >
+      <p
+        class="font-mono text-lg text-gray-800 text-center italic font-extrabold subpixel-antialiased"
+      >
+        "{{result}}"
+      </p>
+    </div>
   </body>
 </html>
